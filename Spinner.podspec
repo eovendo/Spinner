@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  s.name         = "Nodes"
+  s.name         = "Spinner"
   s.version      = "1.2.1"
   s.summary      = "Makes using UIActivityIndicatorView even easier."
   s.description  = <<-DESC
