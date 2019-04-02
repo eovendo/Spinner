@@ -156,7 +156,7 @@ public extension SpinnerView {
      - Parameter images: An array containing the UIImages to use for the animation.
      - Parameter duration: The animation duration.
      */
-    public static func set(customImages images: [UIImage], duration: TimeInterval) {
+    static func set(customImages images: [UIImage], duration: TimeInterval) {
         let image = UIImageView(frame: CGRect(x: 0, y: 0, width: images[0].size.width, height: images[0].size.height))
         image.animationImages = images
         image.animationDuration = duration
@@ -175,7 +175,7 @@ public extension SpinnerView {
      
      - Returns: A reference to the `Spinner` that was created, so that it can be dismissed as needed.
      */
-    public static func showCustomSpinner(inView view: UIView, dimBackground: Bool = false) -> SpinnerView {
+    static func showCustomSpinner(inView view: UIView, dimBackground: Bool = false) -> SpinnerView {
         if let image = animationImage {
             
             //In case the previous spinner wasn't dismissed
@@ -217,7 +217,7 @@ public extension SpinnerView {
      
      - Returns: A reference to the ActivityIndicator that was created, so that it can be dismissed as needed
      */
-    public static func showCustomSpinner(inButton button: UIButton, disablesUserInteraction:Bool = true) -> SpinnerView {
+    static func showCustomSpinner(inButton button: UIButton, disablesUserInteraction:Bool = true) -> SpinnerView {
         let spinnerView = showCustomSpinner(inView: button)
         button.isUserInteractionEnabled = !disablesUserInteraction
         spinnerView.controlTitleColors = button.allTitleColors()
@@ -255,7 +255,7 @@ extension UIImageView: Spinner {
 fileprivate extension UIButton {
     
     // Extension to return an array of every color for every button state
-    fileprivate func allTitleColors() -> [ControlTitleColor] {
+    func allTitleColors() -> [ControlTitleColor] {
         var colors: [ControlTitleColor] = [
             (UIControl.State(), titleColor(for: UIControl.State())),
             (.highlighted, titleColor(for: .highlighted)),
@@ -272,7 +272,7 @@ fileprivate extension UIButton {
         return colors
     }
     
-    fileprivate func allTitleAttributes() -> [ControlTitleAttributes] {
+    func allTitleAttributes() -> [ControlTitleAttributes] {
         var attributes: [ControlTitleAttributes] = [
             (UIControl.State(), attributedTitle(for: UIControl.State())),
             (.highlighted, attributedTitle(for: .highlighted)),
@@ -294,7 +294,7 @@ fileprivate extension UIButton {
      
      - Parameter colors: An array of ControlTitleColor each containing a UIControlState and a UIColor
      */
-    fileprivate func restore(titleColors colors: [ControlTitleColor]?, attributedStrings: [ControlTitleAttributes]?) {
+    func restore(titleColors colors: [ControlTitleColor]?, attributedStrings: [ControlTitleAttributes]?) {
         if colors != nil {
             for color in colors! {
                 if titleColor(for: color.0) == .clear {
@@ -313,14 +313,14 @@ fileprivate extension UIButton {
     /**
      Sets all the the buttons title colors to clear
      */
-    fileprivate func removeAllTitleColors() {
+    func removeAllTitleColors() {
         let clearedColors = allTitleColors().map({ return ($0.0, UIColor.clear) })
         for color in clearedColors {
             setTitleColor(color.1, for: color.0)
         }
     }
     
-    fileprivate func removeAllAttributedStrings() {
+    func removeAllAttributedStrings() {
         self.setAttributedTitle(nil, for: .normal)
         self.setAttributedTitle(nil, for: .highlighted)
         self.setAttributedTitle(nil, for: .disabled)
