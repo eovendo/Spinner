@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "Spinner"
-  s.version      = "1.2.1"
+  s.version      = "1.3"
   s.summary      = "Makes using UIActivityIndicatorView even easier."
   s.description  = <<-DESC
   A helpful loading spinner tool allowing you to present a UIActivityIndicator view directly in to views and buttons.
@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author             = { "Nodes Agency - iOS" => "ios@nodes.dk" }
   s.platform     = :ios, "8.0"
-  s.swift_version = "4.0"
+  s.swift_version = "5.0"
   s.source       = { :git => "https://github.com/eovendo/Spinner.git", :tag => "#{s.version}", :submodules => true }
   s.source_files  = "Spinner"
 end
